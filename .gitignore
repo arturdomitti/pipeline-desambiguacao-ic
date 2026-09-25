@@ -1,5 +1,6 @@
 .venv/
-venv/
-__pycache__/
-*.pyc
+.pipeline_cache/
+*.xlsx
 *.csv
+__pycache__/
+.env
