@@ -2,6 +2,7 @@ import os
 import re
 import json
 import uuid
+import time
 import argparse
 import traceback
 import requests
@@ -10,12 +11,20 @@ import pandas as pd
 import networkx as nx
 from openai import OpenAI
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # carrega variáveis de um arquivo .env na mesma pasta, se existir
+except ImportError:
+    pass  # se python-dotenv não estiver instalado, segue usando só variáveis de ambiente do sistema
+
 
 # ==============================================================================
 # CONFIGURAÇÕES E GERENCIAMENTO DE CHECKPOINTS (CACHE)
 # ==============================================================================
 
 CACHE_DIR = ".pipeline_cache"
+MAILTO = "arturdomitti@usp.br"  # usado no "polite pool" do OpenAlex para aumentar o rate limit
+OPENALEX_API_KEY = os.getenv("OPENALEX_API_KEY")  # gratuito em openalex.org/settings/api; eleva o orçamento diário de $0.10 (sem key, compartilhado por IP) para $1 (por conta)
 
 def ensure_cache_dir():
     """Garante a existência do diretório de estado/cache."""
@@ -67,22 +76,45 @@ def calculate_name_similarity(name1: str, name2: str) -> float:
     return float(matcher.ratio())
 
 
+def fetch_with_retry(url, params, headers, max_retries=5, timeout=15):
+    """
+    Faz requests.get com retry e backoff exponencial em caso de 429 (rate limit)
+    ou erro de rede. Retorna o objeto Response em caso de sucesso, ou None se
+    todas as tentativas falharem.
+    """
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, params=params, headers=headers, timeout=timeout)
+            if response.status_code == 429:
+                wait = 2 ** attempt  # 1, 2, 4, 8, 16s
+                time.sleep(wait)
+                continue
+            return response
+        except requests.exceptions.RequestException:
+            wait = 2 ** attempt
+            time.sleep(wait)
+    return None
+
+
 def fetch_author_works_from_openalex(author_id: str, max_works: int = 10, max_year: int = 2024) -> list:
     clean_id = author_id.split("/")[-1] if "/" in str(author_id) else author_id
     url = "https://api.openalex.org/works"
-    
+
     params = {
         "filter": f"author.id:{clean_id},from_publication_date:1900-01-01,to_publication_date:{max_year}-12-31",
         "per_page": max_works,
-        "sort": "publication_date:desc"
+        "sort": "publication_date:desc",
+        "mailto": MAILTO,
     }
-    headers = {"User-Agent": "mailto:arturdomitti@usp.br"}
+    if OPENALEX_API_KEY:
+        params["api_key"] = OPENALEX_API_KEY
+    headers = {"User-Agent": f"IC-WebSensors ({MAILTO})"}
+
+    response = fetch_with_retry(url, params, headers)
+    if response is None or response.status_code != 200:
+        return []
 
     try:
-        response = requests.get(url, params=params, headers=headers, timeout=15)
-        if response.status_code != 200:
-            return []
-
         results = response.json().get("results", [])
         works_data = []
         for work in results:
@@ -102,15 +134,17 @@ def fetch_author_works_from_openalex(author_id: str, max_works: int = 10, max_ye
 
 def fetch_openalex_candidates(target_name: str, tau_lex: float = 0.65, top_n: int = 5, max_year: int = 2024) -> list:
     url = "https://api.openalex.org/authors"
-    params = {"search": target_name, "per_page": top_n}
-    headers = {"User-Agent": "mailto:arturdomitti@usp.br"}
+    params = {"search": target_name, "per_page": top_n, "mailto": MAILTO}
+    if OPENALEX_API_KEY:
+        params["api_key"] = OPENALEX_API_KEY
+    headers = {"User-Agent": f"IC-WebSensors ({MAILTO})"}
     candidates = []
 
-    try:
-        response = requests.get(url, params=params, headers=headers, timeout=15)
-        if response.status_code != 200:
-            return []
+    response = fetch_with_retry(url, params, headers)
+    if response is None or response.status_code != 200:
+        return []
 
+    try:
         data = response.json()
         raw_results = data.get("results", []) if isinstance(data, dict) else []
 
@@ -164,7 +198,7 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
 
     print("\n[STEP 1] Lendo arquivos CSV da Sucupira...")
     df_autores = pd.read_csv(autores_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
-    
+
     if "NM_PROGRAMA_IES" in df_autores.columns and ppg_filter:
         df_autores = df_autores[df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False)]
     if "SG_ENTIDADE_ENSINO" in df_autores.columns:
@@ -187,13 +221,13 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
 
     df_autores[col_key_autores] = df_autores[col_key_autores].astype(str).str.strip().str.replace(".0", "", regex=False)
     df_producoes[col_key_producoes] = df_producoes[col_key_producoes].astype(str).str.strip().str.replace(".0", "", regex=False)
-    
+
     # --- CORREÇÃO DO KEYERROR AQUI ---
     # Garante que a coluna de ano seja incluída na mesclagem (merge)
     cols_to_use = [col_key_producoes, coluna_titulo]
     if coluna_ano and coluna_ano in df_producoes.columns:
         cols_to_use.append(coluna_ano)
-    
+
     df_producoes_subset = df_producoes[cols_to_use].drop_duplicates()
 
     df_merged = pd.merge(df_autores, df_producoes_subset, left_on=col_key_autores, right_on=col_key_producoes, how="inner")
@@ -204,7 +238,7 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
     dataset = []
     for doc in docentes:
         df_doc = df_merged[df_merged[coluna_autor].str.upper() == doc.upper()].copy()
-        
+
         # Trata o ano de forma segura verificando se a coluna realmente existe no DataFrame mesclado
         has_year = coluna_ano and coluna_ano in df_doc.columns
         if has_year:
@@ -219,7 +253,7 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
                 "title": str(r[coluna_titulo]),
                 "year": ano_val
             })
-        
+
         dataset.append({"docente_name": doc, "validated_works": works})
 
     save_checkpoint(cache_key, dataset)
@@ -229,7 +263,7 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
 
 def step_2_fetch_candidates(dataset_docentes, sample_size: int) -> list:
     """STEP 2: Consulta a API do OpenAlex usando o tamanho da amostra na chave do cache."""
-    cache_key = f"step2_openalex_candidates_sample_{sample_size}.json" # <--- NOME DINÂMICO
+    cache_key = f"step2_openalex_candidates_sample_{sample_size}.json"
     cached_data = load_checkpoint(cache_key)
     if cached_data:
         print(f"--> [STEP 2] Carregado do Cache ({len(cached_data)} docentes).")
@@ -255,7 +289,7 @@ def step_2_fetch_candidates(dataset_docentes, sample_size: int) -> list:
 
 def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
     """STEP 3: Constrói os grafos usando o tamanho da amostra na chave do cache."""
-    cache_key = f"step3_graph_contexts_sample_{sample_size}.json" # <--- NOME DINÂMICO
+    cache_key = f"step3_graph_contexts_sample_{sample_size}.json"
     cached_data = load_checkpoint(cache_key)
     if cached_data:
         print(f"--> [STEP 3] Carregado do Cache ({len(cached_data)} pares).")
@@ -303,7 +337,7 @@ def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
             # Extração de Caminhos no Grafo
             UG = nx.Graph(G)
             paths = list(nx.all_simple_paths(UG, source="A1", target=cand_id, cutoff=5))
-            
+
             path_evidences = []
             for p in paths:
                 parts = []
@@ -334,7 +368,7 @@ def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
 def step_4_process_llm_with_resilience(eval_pairs, client, model_name) -> list:
     """STEP 4: Chama a LLM com salvamento incremental para suportar falhas/reboots."""
     print("\n[STEP 4] Enviando requisições para a LLM com Resiliência/Checkpoint...")
-    
+
     already_processed = load_llm_results_checkpoint()
     results = list(already_processed.values())
 
