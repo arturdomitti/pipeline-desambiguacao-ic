@@ -4,3 +4,4 @@
 *.csv
 __pycache__/
 .env
+# Sincronização do repositório
