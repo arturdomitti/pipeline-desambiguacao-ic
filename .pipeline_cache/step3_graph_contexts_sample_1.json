@@ -1,0 +1,372 @@
+[
+  {
+    "docente_name": "MARIANA CURI",
+    "candidate": {
+      "id": "A5014662344",
+      "name": "Mariana Cúri",
+      "source": "OpenAlex",
+      "validated": false,
+      "lexical_similarity": 0.9166666666666666,
+      "works": [
+        {
+          "title": "An evolutionary neural architecture search for item response theory autoencoders",
+          "year": 2024,
+          "coauthors": [
+            "Gabriel Couto Tabak",
+            "Dylan Molenaar",
+            "Mariana Cúri"
+          ]
+        },
+        {
+          "title": "A Bayesian approach for the G-DINA model",
+          "year": 2024,
+          "coauthors": [
+            "Renato da Silva Fernandes",
+            "Jorge L. Bazán",
+            "Mariana Cúri"
+          ]
+        },
+        {
+          "title": "Item-wise validity study of the Impact of Event Scale-Revised: self-reported reactions of hospital personnel exposed to a stressful workplace",
+          "year": 2024,
+          "coauthors": [
+            "Vitor A Petrilli-Mazon",
+            "Marcos O Carvalho-Alves",
+            "Eurı́pedes Constantino Miguel",
+            "Felipe Corchs",
+            "Mariana Cúri",
+            "Yuan‐Pang Wang"
+          ]
+        },
+        {
+          "title": "Identifiability analysis of the fixed‐effects one‐parameter logistic positive exponent model",
+          "year": 2024,
+          "coauthors": [
+            "Jorge González",
+            "Jorge L. Bazán",
+            "Mariana Cúri"
+          ]
+        },
+        {
+          "title": "Item Response Theory in Sample Reweighting to Build Fairer Classifiers",
+          "year": 2024,
+          "coauthors": [
+            "Diego Minatel",
+            "Nícolas Roque dos Santos",
+            "Vinícius Ferreira da Silva",
+            "Mariana Cúri",
+            "Alneu de Andrade Lopes"
+          ]
+        },
+        {
+          "title": "Masked Autoencoder Transformer for Missing Data Imputation of PISA",
+          "year": 2024,
+          "coauthors": [
+            "Guilherme Mendonça Freire",
+            "Mariana Cúri"
+          ]
+        },
+        {
+          "title": "What rating they will probably give: A cognitive diagnosis approach for recommending items based on polytomous responses and latent attributes",
+          "year": 2023,
+          "coauthors": [
+            "Fernanda Tostes Marana",
+            "Renato da Silva Fernandes",
+            "Jorge L. Bazán",
+            "André C. P. L. F. de Carvalho",
+            "Mariana Cúri"
+          ]
+        },
+        {
+          "title": "Fairness-Aware Model Selection Using Differential Item Functioning",
+          "year": 2023,
+          "coauthors": [
+            "Diego Minatel",
+            "Antonio Rafael Sabino Parmezan",
+            "Mariana Cúri",
+            "Alneu de Andrade Lopes"
+          ]
+        },
+        {
+          "title": "DIF-SR: A Differential Item Functioning-Based Sample Reweighting Method",
+          "year": 2023,
+          "coauthors": [
+            "Diego Minatel",
+            "Antonio Rafael Sabino Parmezan",
+            "Mariana Cúri",
+            "Alneu de Andrade Lopes"
+          ]
+        },
+        {
+          "title": "Real-world treatment patterns of rheumatoid arthritis in Brazil: analysis of DATASUS national administrative claims data for pharmacoepidemiology studies (2010–2020)",
+          "year": 2023,
+          "coauthors": [
+            "Marina Gabriela Birck",
+            "Rafaela Vansan Ferreira",
+            "Mariana Cúri",
+            "Whitney S. Krueger",
+            "Guilherme Silva Julian",
+            "Alexander Liede"
+          ]
+        }
+      ],
+      "affiliations": [
+        "Universidade Federal do Triângulo Mineiro"
+      ]
+    },
+    "validated_works": [
+      {
+        "title": "A BAYESIAN APPROACH FOR THE G-DINA MODEL.",
+        "year": "N/A"
+      },
+      {
+        "title": "AN EVOLUTIONARY NEURAL ARCHITECTURE SEARCH FOR ITEM RESPONSE THEORY AUTOENCODERS",
+        "year": "N/A"
+      },
+      {
+        "title": "IDENTIFIABILITY ANALYSIS OF THE FIXED-EFFECTS ONE-PARAMETER LOGISTIC POSITIVE EXPONENT MODEL",
+        "year": "N/A"
+      },
+      {
+        "title": "WHAT RATING THEY WILL PROBABLY GIVE : A COGNITIVE DIAGNOSIS APPROACH FOR RECOMMENDING ITEMS BASED ON POLYTOMOUS RESPONSES AND LATENT ATTRIBUTES.",
+        "year": "N/A"
+      }
+    ],
+    "candidate_works": [
+      {
+        "title": "An evolutionary neural architecture search for item response theory autoencoders",
+        "year": 2024
+      },
+      {
+        "title": "A Bayesian approach for the G-DINA model",
+        "year": 2024
+      },
+      {
+        "title": "Item-wise validity study of the Impact of Event Scale-Revised: self-reported reactions of hospital personnel exposed to a stressful workplace",
+        "year": 2024
+      },
+      {
+        "title": "Identifiability analysis of the fixed‐effects one‐parameter logistic positive exponent model",
+        "year": 2024
+      },
+      {
+        "title": "Item Response Theory in Sample Reweighting to Build Fairer Classifiers",
+        "year": 2024
+      },
+      {
+        "title": "Masked Autoencoder Transformer for Missing Data Imputation of PISA",
+        "year": 2024
+      },
+      {
+        "title": "What rating they will probably give: A cognitive diagnosis approach for recommending items based on polytomous responses and latent attributes",
+        "year": 2023
+      },
+      {
+        "title": "Fairness-Aware Model Selection Using Differential Item Functioning",
+        "year": 2023
+      },
+      {
+        "title": "DIF-SR: A Differential Item Functioning-Based Sample Reweighting Method",
+        "year": 2023
+      },
+      {
+        "title": "Real-world treatment patterns of rheumatoid arthritis in Brazil: analysis of DATASUS national administrative claims data for pharmacoepidemiology studies (2010–2020)",
+        "year": 2023
+      }
+    ],
+    "context": {
+      "validated_author": {
+        "name": "MARIANA CURI",
+        "source": "Sucupira",
+        "works": [
+          {
+            "title": "A BAYESIAN APPROACH FOR THE G-DINA MODEL.",
+            "year": "N/A"
+          },
+          {
+            "title": "AN EVOLUTIONARY NEURAL ARCHITECTURE SEARCH FOR ITEM RESPONSE THEORY AUTOENCODERS",
+            "year": "N/A"
+          },
+          {
+            "title": "IDENTIFIABILITY ANALYSIS OF THE FIXED-EFFECTS ONE-PARAMETER LOGISTIC POSITIVE EXPONENT MODEL",
+            "year": "N/A"
+          },
+          {
+            "title": "WHAT RATING THEY WILL PROBABLY GIVE : A COGNITIVE DIAGNOSIS APPROACH FOR RECOMMENDING ITEMS BASED ON POLYTOMOUS RESPONSES AND LATENT ATTRIBUTES.",
+            "year": "N/A"
+          }
+        ]
+      },
+      "candidate_author": {
+        "name": "Mariana Cúri",
+        "source": "OpenAlex",
+        "works": [
+          {
+            "title": "An evolutionary neural architecture search for item response theory autoencoders",
+            "year": 2024
+          },
+          {
+            "title": "A Bayesian approach for the G-DINA model",
+            "year": 2024
+          },
+          {
+            "title": "Item-wise validity study of the Impact of Event Scale-Revised: self-reported reactions of hospital personnel exposed to a stressful workplace",
+            "year": 2024
+          },
+          {
+            "title": "Identifiability analysis of the fixed‐effects one‐parameter logistic positive exponent model",
+            "year": 2024
+          },
+          {
+            "title": "Item Response Theory in Sample Reweighting to Build Fairer Classifiers",
+            "year": 2024
+          },
+          {
+            "title": "Masked Autoencoder Transformer for Missing Data Imputation of PISA",
+            "year": 2024
+          },
+          {
+            "title": "What rating they will probably give: A cognitive diagnosis approach for recommending items based on polytomous responses and latent attributes",
+            "year": 2023
+          },
+          {
+            "title": "Fairness-Aware Model Selection Using Differential Item Functioning",
+            "year": 2023
+          },
+          {
+            "title": "DIF-SR: A Differential Item Functioning-Based Sample Reweighting Method",
+            "year": 2023
+          },
+          {
+            "title": "Real-world treatment patterns of rheumatoid arthritis in Brazil: analysis of DATASUS national administrative claims data for pharmacoepidemiology studies (2010–2020)",
+            "year": 2023
+          }
+        ]
+      },
+      "graph_paths": []
+    }
+  },
+  {
+    "docente_name": "MARIANA CURI",
+    "candidate": {
+      "id": "A5112048753",
+      "name": "Mariana Cúri",
+      "source": "OpenAlex",
+      "validated": false,
+      "lexical_similarity": 0.9166666666666666,
+      "works": [
+        {
+          "title": "Neural network methods for application in educational measurement",
+          "year": 2021,
+          "coauthors": [
+            "Geoffrey Converse",
+            "Suely Oliveira",
+            "Mariana Cúri",
+            "David E. Stewart",
+            "Jonathan Templin",
+            "Colleen Mitchell"
+          ]
+        },
+        {
+          "title": "Um Modelo de regressão com respostas Beta Inflacionada e componentes principais",
+          "year": 2019,
+          "coauthors": [
+            "Oilson Alberto Gonzatto",
+            "Marcos Jardel Henriques",
+            "Camila Sgarioni Ozelame",
+            "Anderson Ara",
+            "Mariana Cúri",
+            "Francisco Louzada Neto"
+          ]
+        },
+        {
+          "title": "Padrões léxico-gramaticais na especificação de propósito e resultado em abstracts de artigos científicos: aplicações no ensino de EAP e na construção de ferramentas de suporte à escrita científica",
+          "year": 2015,
+          "coauthors": [
+            "Carmen Dayrell",
+            "Arnaldo Cândido",
+            "Mariana Cúri",
+            "Stella Esther Ortweiler Tagnin",
+            "Sandra Maria Aluísio"
+          ]
+        }
+      ],
+      "affiliations": []
+    },
+    "validated_works": [
+      {
+        "title": "A BAYESIAN APPROACH FOR THE G-DINA MODEL.",
+        "year": "N/A"
+      },
+      {
+        "title": "AN EVOLUTIONARY NEURAL ARCHITECTURE SEARCH FOR ITEM RESPONSE THEORY AUTOENCODERS",
+        "year": "N/A"
+      },
+      {
+        "title": "IDENTIFIABILITY ANALYSIS OF THE FIXED-EFFECTS ONE-PARAMETER LOGISTIC POSITIVE EXPONENT MODEL",
+        "year": "N/A"
+      },
+      {
+        "title": "WHAT RATING THEY WILL PROBABLY GIVE : A COGNITIVE DIAGNOSIS APPROACH FOR RECOMMENDING ITEMS BASED ON POLYTOMOUS RESPONSES AND LATENT ATTRIBUTES.",
+        "year": "N/A"
+      }
+    ],
+    "candidate_works": [
+      {
+        "title": "Neural network methods for application in educational measurement",
+        "year": 2021
+      },
+      {
+        "title": "Um Modelo de regressão com respostas Beta Inflacionada e componentes principais",
+        "year": 2019
+      },
+      {
+        "title": "Padrões léxico-gramaticais na especificação de propósito e resultado em abstracts de artigos científicos: aplicações no ensino de EAP e na construção de ferramentas de suporte à escrita científica",
+        "year": 2015
+      }
+    ],
+    "context": {
+      "validated_author": {
+        "name": "MARIANA CURI",
+        "source": "Sucupira",
+        "works": [
+          {
+            "title": "A BAYESIAN APPROACH FOR THE G-DINA MODEL.",
+            "year": "N/A"
+          },
+          {
+            "title": "AN EVOLUTIONARY NEURAL ARCHITECTURE SEARCH FOR ITEM RESPONSE THEORY AUTOENCODERS",
+            "year": "N/A"
+          },
+          {
+            "title": "IDENTIFIABILITY ANALYSIS OF THE FIXED-EFFECTS ONE-PARAMETER LOGISTIC POSITIVE EXPONENT MODEL",
+            "year": "N/A"
+          },
+          {
+            "title": "WHAT RATING THEY WILL PROBABLY GIVE : A COGNITIVE DIAGNOSIS APPROACH FOR RECOMMENDING ITEMS BASED ON POLYTOMOUS RESPONSES AND LATENT ATTRIBUTES.",
+            "year": "N/A"
+          }
+        ]
+      },
+      "candidate_author": {
+        "name": "Mariana Cúri",
+        "source": "OpenAlex",
+        "works": [
+          {
+            "title": "Neural network methods for application in educational measurement",
+            "year": 2021
+          },
+          {
+            "title": "Um Modelo de regressão com respostas Beta Inflacionada e componentes principais",
+            "year": 2019
+          },
+          {
+            "title": "Padrões léxico-gramaticais na especificação de propósito e resultado em abstracts de artigos científicos: aplicações no ensino de EAP e na construção de ferramentas de suporte à escrita científica",
+            "year": 2015
+          }
+        ]
+      },
+      "graph_paths": []
+    }
+  }
+]

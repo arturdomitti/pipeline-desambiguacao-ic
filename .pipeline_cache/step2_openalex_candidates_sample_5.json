@@ -1,0 +1,1195 @@
+[
+  {
+    "docente_name": "MARIANA CURI",
+    "validated_works": [
+      {
+        "title": "A BAYESIAN APPROACH FOR THE G-DINA MODEL.",
+        "year": "N/A"
+      },
+      {
+        "title": "AN EVOLUTIONARY NEURAL ARCHITECTURE SEARCH FOR ITEM RESPONSE THEORY AUTOENCODERS",
+        "year": "N/A"
+      },
+      {
+        "title": "IDENTIFIABILITY ANALYSIS OF THE FIXED-EFFECTS ONE-PARAMETER LOGISTIC POSITIVE EXPONENT MODEL",
+        "year": "N/A"
+      },
+      {
+        "title": "WHAT RATING THEY WILL PROBABLY GIVE : A COGNITIVE DIAGNOSIS APPROACH FOR RECOMMENDING ITEMS BASED ON POLYTOMOUS RESPONSES AND LATENT ATTRIBUTES.",
+        "year": "N/A"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "A5014662344",
+        "name": "Mariana Cúri",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.9166666666666666,
+        "works": [
+          {
+            "title": "An evolutionary neural architecture search for item response theory autoencoders",
+            "year": 2024,
+            "coauthors": [
+              "Gabriel Couto Tabak",
+              "Dylan Molenaar",
+              "Mariana Cúri"
+            ]
+          },
+          {
+            "title": "A Bayesian approach for the G-DINA model",
+            "year": 2024,
+            "coauthors": [
+              "Renato da Silva Fernandes",
+              "Jorge L. Bazán",
+              "Mariana Cúri"
+            ]
+          },
+          {
+            "title": "Item-wise validity study of the Impact of Event Scale-Revised: self-reported reactions of hospital personnel exposed to a stressful workplace",
+            "year": 2024,
+            "coauthors": [
+              "Vitor A Petrilli-Mazon",
+              "Marcos O Carvalho-Alves",
+              "Eurı́pedes Constantino Miguel",
+              "Felipe Corchs",
+              "Mariana Cúri",
+              "Yuan‐Pang Wang"
+            ]
+          },
+          {
+            "title": "Identifiability analysis of the fixed‐effects one‐parameter logistic positive exponent model",
+            "year": 2024,
+            "coauthors": [
+              "Jorge González",
+              "Jorge L. Bazán",
+              "Mariana Cúri"
+            ]
+          },
+          {
+            "title": "Item Response Theory in Sample Reweighting to Build Fairer Classifiers",
+            "year": 2024,
+            "coauthors": [
+              "Diego Minatel",
+              "Nícolas Roque dos Santos",
+              "Vinícius Ferreira da Silva",
+              "Mariana Cúri",
+              "Alneu de Andrade Lopes"
+            ]
+          },
+          {
+            "title": "Masked Autoencoder Transformer for Missing Data Imputation of PISA",
+            "year": 2024,
+            "coauthors": [
+              "Guilherme Mendonça Freire",
+              "Mariana Cúri"
+            ]
+          },
+          {
+            "title": "What rating they will probably give: A cognitive diagnosis approach for recommending items based on polytomous responses and latent attributes",
+            "year": 2023,
+            "coauthors": [
+              "Fernanda Tostes Marana",
+              "Renato da Silva Fernandes",
+              "Jorge L. Bazán",
+              "André C. P. L. F. de Carvalho",
+              "Mariana Cúri"
+            ]
+          },
+          {
+            "title": "Fairness-Aware Model Selection Using Differential Item Functioning",
+            "year": 2023,
+            "coauthors": [
+              "Diego Minatel",
+              "Antonio Rafael Sabino Parmezan",
+              "Mariana Cúri",
+              "Alneu de Andrade Lopes"
+            ]
+          },
+          {
+            "title": "DIF-SR: A Differential Item Functioning-Based Sample Reweighting Method",
+            "year": 2023,
+            "coauthors": [
+              "Diego Minatel",
+              "Antonio Rafael Sabino Parmezan",
+              "Mariana Cúri",
+              "Alneu de Andrade Lopes"
+            ]
+          },
+          {
+            "title": "Real-world treatment patterns of rheumatoid arthritis in Brazil: analysis of DATASUS national administrative claims data for pharmacoepidemiology studies (2010–2020)",
+            "year": 2023,
+            "coauthors": [
+              "Marina Gabriela Birck",
+              "Rafaela Vansan Ferreira",
+              "Mariana Cúri",
+              "Whitney S. Krueger",
+              "Guilherme Silva Julian",
+              "Alexander Liede"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade Federal do Triângulo Mineiro"
+        ]
+      },
+      {
+        "id": "A5112048753",
+        "name": "Mariana Cúri",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.9166666666666666,
+        "works": [
+          {
+            "title": "Neural network methods for application in educational measurement",
+            "year": 2021,
+            "coauthors": [
+              "Geoffrey Converse",
+              "Suely Oliveira",
+              "Mariana Cúri",
+              "David E. Stewart",
+              "Jonathan Templin",
+              "Colleen Mitchell"
+            ]
+          },
+          {
+            "title": "Um Modelo de regressão com respostas Beta Inflacionada e componentes principais",
+            "year": 2019,
+            "coauthors": [
+              "Oilson Alberto Gonzatto",
+              "Marcos Jardel Henriques",
+              "Camila Sgarioni Ozelame",
+              "Anderson Ara",
+              "Mariana Cúri",
+              "Francisco Louzada Neto"
+            ]
+          },
+          {
+            "title": "Padrões léxico-gramaticais na especificação de propósito e resultado em abstracts de artigos científicos: aplicações no ensino de EAP e na construção de ferramentas de suporte à escrita científica",
+            "year": 2015,
+            "coauthors": [
+              "Carmen Dayrell",
+              "Arnaldo Cândido",
+              "Mariana Cúri",
+              "Stella Esther Ortweiler Tagnin",
+              "Sandra Maria Aluísio"
+            ]
+          }
+        ],
+        "affiliations": []
+      }
+    ]
+  },
+  {
+    "docente_name": "ALEXANDRE CLAUDIO BOTAZZO DELBEM",
+    "validated_works": [
+      {
+        "title": "A DATA-DRIVEN METHOD FOR WATER QUALITY ANALYSIS AND PREDICTION FOR LOCALIZED IRRIGATION",
+        "year": "N/A"
+      },
+      {
+        "title": "A INTELIGÊNCIA ARTIFICIAL NA PESQUISA AGRÍCOLA",
+        "year": "N/A"
+      },
+      {
+        "title": "CONCEPTUAL FRAMEWORK FOR TINNITUS : A COGNITIVE MODEL IN PRACTICE",
+        "year": "N/A"
+      },
+      {
+        "title": "CURRENT TRENDS IN ARTIFICIAL INTELLIGENCE AND BOVINE MASTITIS RESEARCH : A BIBLIOMETRIC REVIEW APPROACH",
+        "year": "N/A"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "A5084551356",
+        "name": "Alexandre C. B. Delbem",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.7407407407407407,
+        "works": [
+          {
+            "title": "A Robust Cold-Start Approach Using Phylogram",
+            "year": 2024,
+            "coauthors": [
+              "Breno Caetano da Silva",
+              "Jorge Luiz Franco",
+              "Hermes Manoel Galvão Castelo Branco",
+              "Eric K. Tokuda",
+              "Alexandre C. B. Delbem"
+            ]
+          },
+          {
+            "title": "Current Trends in Artificial Intelligence and Bovine Mastitis Research: A Bibliometric Review Approach",
+            "year": 2024,
+            "coauthors": [
+              "Thatiane Mendes Mitsunaga",
+              "Breno Luís Nery Garcia",
+              "Ligia Beatriz Rizzanti Pereira",
+              "Yuri Campos Braga Costa",
+              "Roberto Fray da Silva",
+              "Alexandre C. B. Delbem",
+              "Marcos Veiga dos Santos"
+            ]
+          },
+          {
+            "title": "A Data-Driven Method for Water Quality Analysis and Prediction for Localized Irrigation",
+            "year": 2024,
+            "coauthors": [
+              "Roberto Fray da Silva",
+              "Marcos Roberto Benso",
+              "Fernando Elias Corrêa",
+              "Tâmara Guindo Messias",
+              "Fernando Campos Mendonça",
+              "Patrícia Angélica Alves Marques",
+              "Sérgio Nascimento Duarte",
+              "Eduardo Mário Mendiondo",
+              "Alexandre C. B. Delbem",
+              "António Mauro Saraiva"
+            ]
+          },
+          {
+            "title": "A inteligência artificial na pesquisa agrícola",
+            "year": 2024,
+            "coauthors": [
+              "António Mauro Saraiva",
+              "Fernando Santos Osório",
+              "André Freitas Colaço",
+              "Débora Pignatari Drucker",
+              "Eduardo Mário Mendiondo",
+              "Fernando Elias Corrêa",
+              "Filipi Miranda Soares",
+              "José Paulo Molin",
+              "Marcos Roberto Benso",
+              "Patrícia Angélica Alves Marques",
+              "Roberto Fray da Silva",
+              "Sílvia Helena Galvão de Miranda",
+              "Willian França Costa",
+              "Alexandre C. B. Delbem"
+            ]
+          },
+          {
+            "title": "Comment on egusphere-2023-3002",
+            "year": 2024,
+            "coauthors": [
+              "Marcos Roberto Benso",
+              "Roberto Fray da Silva",
+              "Chiquito, Gabriela Gesualdo",
+              "António Mauro Saraiva",
+              "Alexandre C. B. Delbem",
+              "Patrícia Angélica Alves Marques",
+              "Eduardo Mário Mendiondo"
+            ]
+          },
+          {
+            "title": "Conceptual framework for tinnitus: a cognitive model in practice",
+            "year": 2024,
+            "coauthors": [
+              "Iman Ghodratitoostani",
+              "Zahra Sadat Vaziri",
+              "Milton Miranda Neto",
+              "Camila de Giacomo Carneiro Barros",
+              "Alexandre C. B. Delbem",
+              "Miguel Ângelo Hyppolito",
+              "Hamid Jalilvand",
+              "Francisco Louzada",
+              "João Pereira Leite"
+            ]
+          },
+          {
+            "title": "Comment on egusphere-2023-3002",
+            "year": 2024,
+            "coauthors": [
+              "Marcos Roberto Benso",
+              "Roberto Fray da Silva",
+              "Chiquito, Gabriela Gesualdo",
+              "António Mauro Saraiva",
+              "Alexandre C. B. Delbem",
+              "Patricia AngÃ©lica Alves Marques",
+              "Eduardo Mário Mendiondo"
+            ]
+          },
+          {
+            "title": "A data-driven framework for assessing climatic impact-drivers in the context of food security",
+            "year": 2024,
+            "coauthors": [
+              "Marcos Roberto Benso",
+              "Roberto Fray da Silva",
+              "Gabriela Chiquito Gesualdo",
+              "António Mauro Saraiva",
+              "Alexandre C. B. Delbem",
+              "Patrícia Angélica Alves Marques",
+              "Eduardo Mário Mendiondo"
+            ]
+          },
+          {
+            "title": "Supplementary material to \"A data-driven framework for assessing climatic impact-drivers in the context of food security\"",
+            "year": 2024,
+            "coauthors": [
+              "Marcos Roberto Benso",
+              "Roberto Fray da Silva",
+              "Gabriela Chiquito Gesualdo",
+              "António Mauro Saraiva",
+              "Alexandre C. B. Delbem",
+              "Patrícia Angélica Alves Marques",
+              "Eduardo Mário Mendiondo"
+            ]
+          },
+          {
+            "title": "Inteligência artificial e ciência de dados para o desenvolvimento da agricultura inteligente",
+            "year": 2024,
+            "coauthors": [
+              "Ednaldo José Ferreira",
+              "Alexandre C. B. Delbem",
+              "Alex Bisetto Bertolla",
+              "Marcos Cézar Visoli",
+              "Cassio Antônio Andrade",
+              "Suzana Lucy Nixdorf",
+              "Edilene Cristina Ferreira"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de São Paulo",
+          "Institute of Physics",
+          "Institute of Mathematics and Computer Science",
+          "Brazilian Society of Computational and Applied Mathematics"
+        ]
+      },
+      {
+        "id": "A5126420687",
+        "name": "Alexandre Cláudio Botazzo Delbem",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.96875,
+        "works": [],
+        "affiliations": []
+      },
+      {
+        "id": "A5126466607",
+        "name": "Alexandre Cláudio Botazzo Delbem",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.96875,
+        "works": [],
+        "affiliations": []
+      }
+    ]
+  },
+  {
+    "docente_name": "JO UEYAMA",
+    "validated_works": [
+      {
+        "title": "A DEEP LEARNING WORKFLOW ENHANCED WITH OPTICAL FLOW FIELDS FOR FLOOD RISK ESTIMATION",
+        "year": "N/A"
+      },
+      {
+        "title": "AN AUTOMATED DECISION-MAKING SYSTEM EMPLOYING COMPLEX NETWORKS AND BLOCKCHAIN FOR THE DECENTRALIZED STOCK MARKET",
+        "year": "N/A"
+      },
+      {
+        "title": "AN EVALUATION OF IRON ORE CHARACTERISTICS THROUGH MACHINE LEARNING AND 2-D LIDAR TECHNOLOGY",
+        "year": "N/A"
+      },
+      {
+        "title": "BLOCKCHAIN IN INTER-ORGANIZATIONAL COLLABORATION : A PRIVACY-PRESERVING VOTING SYSTEM FOR COLLECTIVE DECISION-MAKING",
+        "year": "N/A"
+      },
+      {
+        "title": "DEEP LEARNING AND OBJECT DETECTION FOR WATER LEVEL MEASUREMENT USING PATTERNED VISUAL MARKERS",
+        "year": "N/A"
+      },
+      {
+        "title": "ENSURING RELIABLE WATER LEVEL MEASUREMENT FOR FLOODING : A REDUNDANCY-BASED APPROACH WITH PRESSURE TRANSDUCER AND COMPUTER VISION",
+        "year": "N/A"
+      },
+      {
+        "title": "PERFORMANCE ANALYSIS OF A VEHICULAR AD HOC NETWORK USING LORA TECHNOLOGY AND IOT DEVICES IN AMAZON RIVERS",
+        "year": "N/A"
+      },
+      {
+        "title": "WATER LEVEL IDENTIFICATION WITH LASER SENSORS, INERTIAL UNITS, AND MACHINE LEARNING",
+        "year": "N/A"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "A5023928945",
+        "name": "Jó Ueyama",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.8888888888888888,
+        "works": [
+          {
+            "title": "Ensuring reliable water level measurement for flooding: A redundancy-based approach with pressure transducer and computer vision",
+            "year": 2024,
+            "coauthors": [
+              "Saulo Neves Matos",
+              "Arthur Diego Dias Rocha",
+              "Gabriel Montagni Domingues Filho",
+              "Caetano Mazzoni Ranieri",
+              "Rodrigo Dutra Garcia",
+              "Ana Faria",
+              "Maria Mercedes Gamboa-Medina",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "A Survey of Blockchain-Based Privacy Applications: An Analysis of Consent Management and Self-Sovereign Identity Approaches",
+            "year": 2024,
+            "coauthors": [
+              "Rodrigo Dutra Garcia",
+              "Gowri Sankar Ramachandran",
+              "Kealan Dunnett",
+              "Raja Jurdak",
+              "Caetano Mazzoni Ranieri",
+              "Bhaskar Krishnamachari",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "Deep Learning and object detection for water level measurement using patterned visual markers",
+            "year": 2024,
+            "coauthors": [
+              "Gabriel Montagni Domingues Filho",
+              "Caetano Mazzoni Ranieri",
+              "Saulo Neves Matos",
+              "Rodolfo I. Meneguette",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "Image Segmentation with Zero-Shot Generalization for Flood Prediction in Urban Environments",
+            "year": 2024,
+            "coauthors": [
+              "Pedro Negrão",
+              "Caetano Mazzoni Ranieri",
+              "Saulo Neves Matos",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "Blockchain-based data governance for privacy-preserving in multi-stakeholder settings",
+            "year": 2024,
+            "coauthors": [
+              "Rodrigo Dutra Garcia",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "Is a poster a strong signal of film quality? evaluating the predictive power of visual elements using deep learning",
+            "year": 2024,
+            "coauthors": [
+              "Thaís Luiza Donega e Souza",
+              "Caetano Mazzoni Ranieri",
+              "Anand V. Panangadan",
+              "Jó Ueyama",
+              "Marislei Nishijima"
+            ]
+          },
+          {
+            "title": "Towards a Portability Scheme for Decentralized Identifiers in Self-Sovereign Identities",
+            "year": 2024,
+            "coauthors": [
+              "João Pedro Alonso Almeida",
+              "Gowri Sankar Ramachandran",
+              "Paul P. Ashley",
+              "Raja Jurdak",
+              "Steven McCown",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "An automated decision-making system employing complex networks and blockchain for the decentralized stock market",
+            "year": 2024,
+            "coauthors": [
+              "Rodrigo Dutra Garcia",
+              "Junio Cesar Ferreira",
+              "Lucas Zanotti",
+              "Gowri Sankar Ramachandran",
+              "Júlio Cézar Estrella",
+              "Jó Ueyama"
+            ]
+          },
+          {
+            "title": "Blockchain in inter-organizational collaboration: A privacy-preserving voting system for collective decision-making",
+            "year": 2024,
+            "coauthors": [
+              "Lívia Maria Bettini de Miranda",
+              "Rodrigo Dutra Garcia",
+              "Gowri Sankar Ramachandran",
+              "Jó Ueyama",
+              "Fábio Müller Guerrini"
+            ]
+          },
+          {
+            "title": "POSTER: Towards an Identity Authentication Layer in CBDC Networks using Self-Sovereign Identities",
+            "year": 2024,
+            "coauthors": [
+              "João Pedro Alonso Almeida",
+              "Rodrigo Dutra Garcia",
+              "Gowri Sankar Ramachandran",
+              "Jó Ueyama"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de São Paulo",
+          "Institute of Mathematics and Computer Science",
+          "Brazilian Society of Computational and Applied Mathematics"
+        ]
+      },
+      {
+        "id": "A5060070234",
+        "name": "Ueyama Jo",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.6666666666666666,
+        "works": [
+          {
+            "title": "音声パターンにおける感情の同定:採用されたアプローチと得られた結果【Powered by NICT】",
+            "year": 2016,
+            "coauthors": [
+              "Yukio Mano Leandro",
+              "Vasconcelos Eduardo",
+              "Ueyama Jo"
+            ]
+          }
+        ],
+        "affiliations": []
+      }
+    ]
+  },
+  {
+    "docente_name": "ELISA YUMI NAKAGAWA",
+    "validated_works": [
+      {
+        "title": "A FRAMEWORK FOR THE DESIGN OF FAULT-TOLERANT SYSTEMS-OF-SYSTEMS",
+        "year": "N/A"
+      },
+      {
+        "title": "REQUIREMENTS ENGINEERING IN INDUSTRY 4.0 : STATE OF THE ART AND DIRECTIONS TO CONTINUOUS REQUIREMENTS ENGINEERING",
+        "year": "N/A"
+      },
+      {
+        "title": "SUSTAINABLE SYSTEMATIC LITERATURE REVIEWS",
+        "year": "N/A"
+      },
+      {
+        "title": "SYSTEMS INTEROPERABILITY TYPES : A TERTIARY STUDY",
+        "year": "N/A"
+      },
+      {
+        "title": "TECHNICAL DEBT MANAGEMENT AUTOMATION : STATE OF THE ART AND FUTURE PERSPECTIVES",
+        "year": "N/A"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "A5051850325",
+        "name": "Elisa Yumi Nakagawa",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 1.0,
+        "works": [
+          {
+            "title": "Sustainable systematic literature reviews",
+            "year": 2024,
+            "coauthors": [
+              "Vinicius dos Santos",
+              "Anderson Yoshiaki Iwazaki",
+              "Katia Romero Felizardo",
+              "Érica Ferreira de Souza",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "TASIS: A typology of architectural strategies for interoperability in software-intensive systems",
+            "year": 2024,
+            "coauthors": [
+              "Pedro Henrique Dias Valle",
+              "Vítor Rodrigues Tonon",
+              "Lina Garcés",
+              "Solange Oliveira Rezende",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "Technical Debt in Continuous Software Engineering: An Overview of the State of the Art and Future Trends",
+            "year": 2024,
+            "coauthors": [
+              "Lucas de Oliveira Carvalho",
+              "João Paulo Biazotto",
+              "Daniel Feitosa",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "Systems Interoperability Types: A Tertiary Study",
+            "year": 2024,
+            "coauthors": [
+              "Paulo Maciel",
+              "Pedro Henrique Dias Valle",
+              "Kécia Souza Santana Santos",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "Self-adaptive, Requirements-driven Autoscaling of Microservices",
+            "year": 2024,
+            "coauthors": [
+              "João Paulo Karol Santos Nunes",
+              "Shiva Nejati",
+              "Mehrdad Sabetzadeh",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "Employing Discrete Controller Synthesis for Developing Systems-of-Systems Controllers",
+            "year": 2024,
+            "coauthors": [
+              "Jialong Li",
+              "Wallace Manzano",
+              "Takuto Yamauchi",
+              "Nobuhiro Matsuyama",
+              "Elisa Yumi Nakagawa",
+              "Kenji Tei"
+            ]
+          },
+          {
+            "title": "Towards Automatic Generation of Systems-of-Systems Architectural Configurations",
+            "year": 2024,
+            "coauthors": [
+              "Marcos Borges",
+              "Wallace Manzano",
+              "Lincoln S. Rocha",
+              "Paulo Henrique M. Maia",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "Requirements engineering in industry 4.0: State of the art and directions to continuous requirements engineering",
+            "year": 2024,
+            "coauthors": [
+              "Leonardo Vieira Barcelos",
+              "Pablo Oliveira Antonino",
+              "Elisa Yumi Nakagawa"
+            ]
+          },
+          {
+            "title": "A framework for the design of fault-tolerant systems-of-systems",
+            "year": 2024,
+            "coauthors": [
+              "Francisco Henrique Ferreira",
+              "Elisa Yumi Nakagawa",
+              "Antonia Bertolino",
+              "Francesca Lonetti",
+              "Vânia de Oliveira Neves",
+              "Rodrigo Pereira dos Santos"
+            ]
+          },
+          {
+            "title": "Self-adaptive, Requirements-driven Autoscaling of Microservices",
+            "year": 2024,
+            "coauthors": [
+              "João Paulo Karol Santos Nunes",
+              "Shiva Nejati",
+              "Mehrdad Sabetzadeh",
+              "Elisa Yumi Nakagawa"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de São Paulo",
+          "Universidad San Pedro",
+          "Hospital Universitário da Universidade de São Paulo"
+        ]
+      },
+      {
+        "id": "A5137352105",
+        "name": "Elisa Yumi Nakagawa",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 1.0,
+        "works": [],
+        "affiliations": [
+          "Universidad San Pedro"
+        ]
+      },
+      {
+        "id": "A5032843656",
+        "name": "Elisa Yumi Nakagawa",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 1.0,
+        "works": [
+          {
+            "title": "Architectural Description of Embedded Systems: a Systematic Review",
+            "year": 2012,
+            "coauthors": [
+              "Guessi, Milena",
+              "Elisa Yumi Nakagawa",
+              "Flávio Oquendo",
+              "José Carlos Maldonado"
+            ]
+          }
+        ],
+        "affiliations": []
+      },
+      {
+        "id": "A5142641916",
+        "name": "Elisa Y. Nakagawa",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.8888888888888888,
+        "works": [
+          {
+            "title": "Service-Oriented Computing – ICSOC 2019 Workshops",
+            "year": 2020,
+            "coauthors": [
+              "Sami Yangui",
+              "Athman Bouguettaya",
+              "Xiao Xue",
+              "Noura Faci",
+              "Walid Gaaloul",
+              "Qi Yu",
+              "Zhangbing Zhou",
+              "Nathalie Hernández",
+              "Elisa Y. Nakagawa"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de São Paulo",
+          "Universidade Cidade de São Paulo"
+        ]
+      },
+      {
+        "id": "A5133650474",
+        "name": "Elisa Yumi Nakagawa",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 1.0,
+        "works": [],
+        "affiliations": [
+          "University of Groningen",
+          "Universidade Federal de São Carlos",
+          "Institute of Physics"
+        ]
+      }
+    ]
+  },
+  {
+    "docente_name": "ANTONIO CASTELO FILHO",
+    "validated_works": [
+      {
+        "title": "A GENERALISATION OF THE INTEGRAL MAXWELL MODEL : THE GK-BKZ MODEL-FRAME INVARIANCE AND ANALYTICAL SOLUTIONS",
+        "year": "N/A"
+      },
+      {
+        "title": "A GENERALIZED COMBINATORIAL MARCHING HYPERCUBE ALGORITHM",
+        "year": "N/A"
+      },
+      {
+        "title": "NUMERICAL SIMULATION OF A THIXOTROPIC-VISCOELASTIC MODEL IN CONTRACTION GEOMETRIES",
+        "year": "N/A"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "A5075052095",
+        "name": "Antonio Castelo",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.8333333333333334,
+        "works": [
+          {
+            "title": "Epidemiological analysis of hospitalizations for Schizophrenia, Schizotypal Disorders and Delirium in Rio Grande do Sul over the last 5 years",
+            "year": 2024,
+            "coauthors": [
+              "L. Bardini",
+              "Arnold Kruger",
+              "G. Moreno Xavier",
+              "Gabriel Fiorio Grando",
+              "João Michelon",
+              "L. F. Alves Nascimento",
+              "J. Adames",
+              "A. T. Konzen",
+              "G. Pereira Bernd",
+              "C. Fontes Augusto",
+              "H. Wolmeister",
+              "I. Fachinetto Thoen",
+              "Yasmin De França",
+              "P. H. Filipin Von Muhlen",
+              "Filipe Costa",
+              "Vinícius Kayser",
+              "Pedro Henrique Dutra",
+              "R. Rahal de Albuquerque",
+              "T. Garcia Furtado",
+              "Gabriela Pereira Macelaro",
+              "Antonio Castelo",
+              "H. Vieira Rodrigues",
+              "E. Rockenbach Fidélis",
+              "D. Crusius",
+              "E. Guidugli",
+              "MJA Paula",
+              "Yasmin Marques Loureiro",
+              "EDUARDA PAIVA BORSA",
+              "L. de Paula e Souza",
+              "G. Ferreira Cruz"
+            ]
+          },
+          {
+            "title": "Mental and Behavioral Disorders Associated with the Use of Psychoactive Substances and Alcohol: An Epidemiological Analysis in Southern Brazil",
+            "year": 2024,
+            "coauthors": [
+              "L. Bardini",
+              "A. Roloff Krüger",
+              "G. Moreno Xavier",
+              "Gabriel Fiorio Grando",
+              "João Michelon",
+              "L. F. Alves Nascimento",
+              "J. Adames",
+              "A. T. Konzen",
+              "G. Pereira Bernd",
+              "César Augusto",
+              "H. Wolmeister",
+              "I. Fachinetto Thoen",
+              "Yasmin De França",
+              "P. H. Filipin Von Muhlen",
+              "Fiona Costa",
+              "Vinícius Kayser",
+              "Pedro Henrique Dutra",
+              "R. Albuquerque",
+              "T. Garcia Furtado",
+              "Gabriela Pereira Macelaro",
+              "Antonio Castelo",
+              "H. Vieira Rodrigues",
+              "E. Rockenbach Fidélis",
+              "D. Crusius",
+              "E. Guidugli",
+              "M. F. Valentim de Paula",
+              "Yasmin Marques Loureiro",
+              "EDUARDA PAIVA BORSA",
+              "L. de Paula e Souza",
+              "G. Ferreira Cruz"
+            ]
+          },
+          {
+            "title": "Understanding the Occurrence of Psychiatric Disorders in Epilepsy in Brazil: An Epidemiological Investigation",
+            "year": 2024,
+            "coauthors": [
+              "L. Bardini Goulart",
+              "A. Roloff Krüger",
+              "G. Moreno Xavier",
+              "Gabriel Fiorio Grando",
+              "João Michelon",
+              "L. F. Alves Nascimento",
+              "J. Adames",
+              "A. T. Konzen",
+              "G. Pereira Bernd",
+              "César Augusto",
+              "H. Wolmeister",
+              "I. Fachinetto Thoen",
+              "Yasmin De França",
+              "P. H. Filipin Von Muhlen",
+              "Filipe Costa",
+              "Vinícius Kayser",
+              "Pedro Henrique Dutra",
+              "R. Rahal de Albuquerque",
+              "T. Garcia Furtado",
+              "Gabriela Pereira Macelaro",
+              "Antonio Castelo",
+              "H. Vieira Rodrigues",
+              "E. Rockenbach Fidélis",
+              "D. Crusius",
+              "E. Guidugli",
+              "M. F. Valentim de Paula",
+              "Yasmin Marques Loureiro",
+              "EDUARDA PAIVA BORSA",
+              "L. de Paula e Souza",
+              "G. Ferreira Cruz"
+            ]
+          },
+          {
+            "title": "A generalized combinatorial marching hypercube algorithm",
+            "year": 2024,
+            "coauthors": [
+              "Antonio Castelo",
+              "Guilherme Nakassima",
+              "Lucas Moutinho Bueno",
+              "Marcio Gameiro"
+            ]
+          },
+          {
+            "title": "A generalisation of the integral Maxwell model: the gK-BKZ model—frame invariance and analytical solutions",
+            "year": 2024,
+            "coauthors": [
+              "Rosalía T. Leiva",
+              "Luís Lima Ferrás",
+              "Antonio Castelo",
+              "Maria Luísa Morgado",
+              "Magda Rebelo",
+              "Juliana Bertoco",
+              "A.M. Afonso"
+            ]
+          },
+          {
+            "title": "Numerical simulation of a thixotropic-viscoelastic model in contraction geometries",
+            "year": 2024,
+            "coauthors": [
+              "Hugo A. Castillo-Sánchez",
+              "Manoel Silvino Batalha de Araújo",
+              "Juliana Bertoco",
+              "Célio B. P. Fernandes",
+              "Luís Lima Ferrás",
+              "Antonio Castelo"
+            ]
+          },
+          {
+            "title": "Laser processes are shaping e‐mobility in Europe",
+            "year": 2023,
+            "coauthors": [
+              "Antonio Castelo"
+            ]
+          },
+          {
+            "title": "“Focus on sales by developing something unique”",
+            "year": 2023,
+            "coauthors": [
+              "Antonio Castelo"
+            ]
+          },
+          {
+            "title": "Numerical Simulation of a Thixotropic-Viscoelastic Model in Contraction Geometries",
+            "year": 2023,
+            "coauthors": [
+              "Hugo A. Castillo-Sánchez",
+              "Manoel Silvino Batalha de Araújo",
+              "Juliana Bertoco",
+              "Célio B. P. Fernandes",
+              "Luís Lima Ferrás",
+              "Antonio Castelo"
+            ]
+          },
+          {
+            "title": "Validation of HiG-Flow Software for Simulating Two-Phase Flows with a 3D Geometric Volume of Fluid Algorithm",
+            "year": 2023,
+            "coauthors": [
+              "A. Silva",
+              "Célio B. P. Fernandes",
+              "Juniormar Organista",
+              "Leandro Franco de Souza",
+              "Antonio Castelo"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Institute of Mathematics and Computer Science"
+        ]
+      },
+      {
+        "id": "A5103850978",
+        "name": "Antônio Castelo Filho",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.9523809523809523,
+        "works": [
+          {
+            "title": "Leak Detection in Hermetic Compressors using Computer Vision and Artificial Intelligence",
+            "year": 2023,
+            "coauthors": [
+              "Wallace Correa de Oliveira Casaca",
+              "João Paulo Papa",
+              "Marilaine Colnago",
+              "Thomas Peron",
+              "Fabio Amaral",
+              "Livia S. Freire",
+              "Homero Busnello",
+              "Luís Gustavo Nonato",
+              "Aldimir Bruzadin",
+              "Antônio Castelo Filho",
+              "Geraldo Bezerra da Silva",
+              "Leandro Franco de Souza",
+              "Julio Michael Stern"
+            ]
+          },
+          {
+            "title": "Um Método para Comparar Palavras entre Categorias utilizando Word2Vec e Redução de Dimensionalidade no Problema de Categorização de Produtos",
+            "year": 2022,
+            "coauthors": [
+              "Gilsiley H. Darú",
+              "Philipe D. Almeida",
+              "Francisco J. Pigato",
+              "Antônio Castelo Filho"
+            ]
+          },
+          {
+            "title": "Aplicação de otimização linear na seleção de portfólio de projetos",
+            "year": 2021,
+            "coauthors": [
+              "Celina Morais Lima",
+              "José Antônio Rabi",
+              "Antônio Castelo Filho"
+            ]
+          },
+          {
+            "title": "Simulação do modelo constitutivo integral KBKZ-PSM usando diferenças finitas em malhas hierárquicas",
+            "year": 2020,
+            "coauthors": [
+              "Juliana Bertoco",
+              "Rosalía Taboada Leiva",
+              "Antônio Castelo Filho"
+            ]
+          },
+          {
+            "title": "Desenvolvimento da Tecnica VOF para o Sistema HIG-Flow",
+            "year": 2018,
+            "coauthors": [
+              "Aquisson Theyllon Gomes da Silva",
+              "Antônio Castelo Filho"
+            ]
+          },
+          {
+            "title": "Notas Editoriais",
+            "year": 2015,
+            "coauthors": [
+              "Antônio Castelo Filho",
+              "Fabricio Simeoni de Sousa"
+            ]
+          },
+          {
+            "title": "Notas editoriais",
+            "year": 2015,
+            "coauthors": [
+              "Antônio Castelo Filho",
+              "Fabricio Simeoni de Sousa"
+            ]
+          },
+          {
+            "title": "ENHANCING IMPLICIT HIGH-ORDER SPECTRAL FINITE VOLUME SCHEMES APPLICABILITY ON UNSTRUCTURED MESHES",
+            "year": 2015,
+            "coauthors": [
+              "Fernanda Paula Barbosa Pola",
+              "Ives Renê Venturini Pola",
+              "Antônio Castelo Filho"
+            ]
+          },
+          {
+            "title": "Solução Numérica de Equações Diferenciais Parciais Implícitas de Primeira Ordem",
+            "year": 2014,
+            "coauthors": [
+              "Sergio A. Escobedo",
+              "Antônio Castelo Filho",
+              "Marcio Gameiro"
+            ]
+          },
+          {
+            "title": "ao de Interface para o M´ \"Incompressible Smoothed Particle Hydrodynamics\"",
+            "year": 2014,
+            "coauthors": [
+              "Antônio Castelo Filho"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de São Paulo"
+        ]
+      },
+      {
+        "id": "A5093380042",
+        "name": "Antônio do Rêgo Castelo Branco Filho",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.7017543859649122,
+        "works": [
+          {
+            "title": "Sex estimation through lateral cephalometric analysis in a Brazilian sample using a binary logistic regression model",
+            "year": 2023,
+            "coauthors": [
+              "Bianca Maria Domingues",
+              "Paulo Henrique Viana Pinto",
+              "Antônio do Rêgo Castelo Branco Filho",
+              "Ricardo Henrique Alves da Silva"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de Ribeirão Preto",
+          "Universidade de São Paulo"
+        ]
+      },
+      {
+        "id": "A5078798636",
+        "name": "Antônio Castelo Branco",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.7441860465116279,
+        "works": [
+          {
+            "title": "Influence of minimally invasive cavities on color stability of dental crowns with different filling sealers",
+            "year": 2024,
+            "coauthors": [
+              "Alice Corrêa Silva‐Sousa",
+              "Manoel Damião Sousa‐Neto",
+              "Rafael Verardino de Camargo",
+              "Thamires Diogo Lima",
+              "Antônio Castelo Branco",
+              "Fernanda de Carvalho Panzeri Pires‐de‐Souza",
+              "André Luis Faria‐e‐Silva",
+              "Francisco Wanderley Garcia Paula‐Silva",
+              "Renato Roperto",
+              "Aline Evangelista Souza‐Gabriel",
+              "Jardel Francisco Mazzi‐Chaves"
+            ]
+          },
+          {
+            "title": "Evaluation of reproduction technique of bitemarks printed in chewing gum for human identification",
+            "year": 2020,
+            "coauthors": [
+              "Maria Isabel de Oliveira e Britto Villalobos",
+              "Marta Regina Pinheiro Flores",
+              "Rodrigo Galo",
+              "Antônio Castelo Branco",
+              "Ricardo Henrique Alves da Silva"
+            ]
+          }
+        ],
+        "affiliations": [
+          "Universidade de Ribeirão Preto",
+          "Universidade de São Paulo",
+          "Universidade Brasil",
+          "Clinics Hospital of Ribeirão Preto"
+        ]
+      },
+      {
+        "id": "A5130837074",
+        "name": "Marco Antonio Castelo Branco Barros Filho",
+        "source": "OpenAlex",
+        "validated": false,
+        "lexical_similarity": 0.6774193548387096,
+        "works": [
+          {
+            "title": "Tão longe, tão perto: modernidade e tradição na obra de Nícia Paes Bormann",
+            "year": 2022,
+            "coauthors": [
+              "Bruno Melo Braga",
+              "Érica Maria de Barros Martins",
+              "Marco Antonio Castelo Branco Barros Filho"
+            ]
+          },
+          {
+            "title": "Tão longe, tão perto: modernidade e tradição na obra de Nícia Paes Bormann",
+            "year": 2022,
+            "coauthors": [
+              "Bruno Melo Braga",
+              "Érica Maria de Barros Martins",
+              "Marco Antonio Castelo Branco Barros Filho"
+            ]
+          }
+        ],
+        "affiliations": []
+      }
+    ]
+  }
+]
