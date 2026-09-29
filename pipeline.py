@@ -199,7 +199,12 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
     print("\n[STEP 1] Lendo arquivos CSV da Sucupira...")
     df_autores = pd.read_csv(autores_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
 
-    if "NM_PROGRAMA_IES" in df_autores.columns and ppg_filter:
+    if "CD_PROGRAMA_IES" in df_autores.columns and ppg_filter:
+        df_autores = df_autores[
+            (df_autores["CD_PROGRAMA_IES"].astype(str) == ppg_filter) |
+            (df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False))
+        ]
+    if "CD_PROGRAMA_IES" in df_autores.columns and ppg_filter:
         df_autores = df_autores[df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False)]
     if "SG_ENTIDADE_ENSINO" in df_autores.columns:
         df_autores = df_autores[df_autores["SG_ENTIDADE_ENSINO"].str.contains("USP|UFSCAR", case=False, na=False, regex=True)]
