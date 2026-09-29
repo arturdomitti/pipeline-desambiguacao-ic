@@ -204,12 +204,6 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
             (df_autores["CD_PROGRAMA_IES"].astype(str) == ppg_filter) |
             (df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False))
         ]
-    if "CD_PROGRAMA_IES" in df_autores.columns and ppg_filter:
-        df_autores = df_autores[df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False)]
-    if "SG_ENTIDADE_ENSINO" in df_autores.columns:
-        df_autores = df_autores[df_autores["SG_ENTIDADE_ENSINO"].str.contains("USP|UFSCAR", case=False, na=False, regex=True)]
-    if "TP_AUTOR" in df_autores.columns:
-        df_autores = df_autores[df_autores["TP_AUTOR"].str.upper() == "DOCENTE"]
 
     df_p1 = pd.read_csv(prod1_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
     df_p2 = pd.read_csv(prod2_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
