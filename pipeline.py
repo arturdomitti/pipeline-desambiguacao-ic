@@ -62,9 +62,33 @@ def load_llm_results_checkpoint(filename="llm_results_checkpoint.jsonl") -> dict
                 if line.strip():
                     row = json.loads(line)
                     # Chave única formada por: Docente_ID_Candidato
-                    key = f"{row['Docente_Sucupira']}_{row['OpenAlex_ID']}"
+                    key = f"{row.get('Docente_ID', row['Docente_Sucupira'])}_{row['OpenAlex_ID']}"
                     processed[key] = row
     return processed
+
+def make_tag(ppg_filter, sample_size) -> str:
+    """Sufixo de cache: muda se o filtro de PPG ou o tamanho da amostra mudar."""
+    ppg_key = re.sub(r"\W+", "_", ppg_filter)[:30] if ppg_filter else "todos"
+    size_key = sample_size if sample_size else "all"
+    return f"{size_key}_{ppg_key}"
+
+
+def normalize_inst(name: str) -> set:
+    """Normaliza nome de instituição (PT/EN) em um conjunto de tokens comparáveis."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(name or "")).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    trad = {"universidade": "university", "estadual": "state", "instituto": "institute",
+            "faculdade": "college", "centro": "center"}
+    stop = {"de", "do", "da", "dos", "das", "of", "the", "and", "e"}
+    return {trad.get(t, t) for t in s.split() if t not in stop}
+
+
+def same_institution(inst_sucupira: str, aff_openalex: str, threshold: float = 0.6) -> bool:
+    a, b = normalize_inst(inst_sucupira), normalize_inst(aff_openalex)
+    if not a or not b:
+        return False
+    return len(a & b) / len(a | b) >= threshold
 
 
 # ==============================================================================
@@ -188,25 +212,36 @@ def fetch_openalex_candidates(target_name: str, tau_lex: float = 0.65, top_n: in
 # PIPELINE BASEADA EM STEPS (ETAPAS)
 # ==============================================================================
 
-def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_size) -> list:
-    """STEP 1: Carrega dados validados da Sucupira e seleciona a amostra de docentes."""
-    cache_key = f"step1_docentes_sample_{sample_size}.json"
+def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter=None, sample_size=0, max_year=2024) -> list:
+    """STEP 1: Carrega dados validados da Sucupira (só docentes) e monta o dataset.
+    ppg_filter=None -> base inteira. sample_size=0 -> todos os docentes."""
+    ppg_key = re.sub(r"\W+", "_", ppg_filter)[:30] if ppg_filter else "todos"
+    size_key = sample_size if sample_size else "all"
+    cache_key = f"step1_docentes_{size_key}_{ppg_key}.json"
+
     cached_data = load_checkpoint(cache_key)
     if cached_data:
         print("--> [STEP 1] Carregado do Cache (Sucupira).")
         return cached_data
 
     print("\n[STEP 1] Lendo arquivos CSV da Sucupira...")
-    df_autores = pd.read_csv(autores_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
+    df_autores = pd.read_csv(autores_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines="skip")
 
-    if "CD_PROGRAMA_IES" in df_autores.columns and ppg_filter:
+    # só docentes
+    df_autores = df_autores[df_autores["ID_PESSOA_DOCENTE"].notna()].copy()
+    df_autores["ID_PESSOA_DOCENTE"] = (
+        df_autores["ID_PESSOA_DOCENTE"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True)
+    )
+
+    # filtro de PPG opcional
+    if ppg_filter:
         df_autores = df_autores[
             (df_autores["CD_PROGRAMA_IES"].astype(str) == ppg_filter) |
             (df_autores["NM_PROGRAMA_IES"].str.contains(ppg_filter, case=False, na=False))
         ]
 
-    df_p1 = pd.read_csv(prod1_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
-    df_p2 = pd.read_csv(prod2_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines='skip')
+    df_p1 = pd.read_csv(prod1_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines="skip")
+    df_p2 = pd.read_csv(prod2_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines="skip")
     df_producoes = pd.concat([df_p1, df_p2], ignore_index=True)
 
     col_key_autores = "ID_ADD_PRODUCAO_INTELECTUAL" if "ID_ADD_PRODUCAO_INTELECTUAL" in df_autores.columns else "ID_PRODUCAO_INTELECTUAL"
@@ -218,77 +253,110 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter, sample_s
     colunas_possiveis_ano = ["AN_BASE_REVISION", "AN_BASE", "NU_ANO_PRODUCAO", "AN_PRODUCAO"]
     coluna_ano = next((c for c in colunas_possiveis_ano if c in df_producoes.columns), None)
 
-    df_autores[col_key_autores] = df_autores[col_key_autores].astype(str).str.strip().str.replace(".0", "", regex=False)
-    df_producoes[col_key_producoes] = df_producoes[col_key_producoes].astype(str).str.strip().str.replace(".0", "", regex=False)
+    # limpa as chaves do merge (sem "nan" casando entre si)
+    df_autores = df_autores.dropna(subset=[col_key_autores]).copy()
+    df_producoes = df_producoes.dropna(subset=[col_key_producoes]).copy()
+    df_autores[col_key_autores] = df_autores[col_key_autores].astype(str).str.strip().str.replace(r"\.0$", "", regex=True)
+    df_producoes[col_key_producoes] = df_producoes[col_key_producoes].astype(str).str.strip().str.replace(r"\.0$", "", regex=True)
 
-    # --- CORREÇÃO DO KEYERROR AQUI ---
-    # Garante que a coluna de ano seja incluída na mesclagem (merge)
-    cols_to_use = [col_key_producoes, coluna_titulo]
-    if coluna_ano and coluna_ano in df_producoes.columns:
-        cols_to_use.append(coluna_ano)
+    # renomeia título e ano pra nomes fixos: evita colisão de colunas no merge
+    # (AN_BASE existe nos dois arquivos e viraria AN_BASE_x / AN_BASE_y)
+    df_prod_subset = pd.DataFrame({
+        col_key_producoes: df_producoes[col_key_producoes],
+        "TITULO_PROD": df_producoes[coluna_titulo],
+        "ANO_PROD": pd.to_numeric(df_producoes[coluna_ano], errors="coerce").fillna(0).astype(int) if coluna_ano else 0,
+    }).drop_duplicates()
 
-    df_producoes_subset = df_producoes[cols_to_use].drop_duplicates()
-
-    df_merged = pd.merge(df_autores, df_producoes_subset, left_on=col_key_autores, right_on=col_key_producoes, how="inner")
+    df_merged = pd.merge(df_autores, df_prod_subset, left_on=col_key_autores, right_on=col_key_producoes, how="left")
 
     coluna_autor = "NM_AUTOR" if "NM_AUTOR" in df_merged.columns else "NM_DOCENTE"
-    docentes = df_merged[coluna_autor].dropna().unique()[:sample_size]
+
+    # amostra de docentes (por ID, não por nome)
+    docentes_df = df_merged.drop_duplicates(subset=["ID_PESSOA_DOCENTE"])[
+        ["ID_PESSOA_DOCENTE", coluna_autor, "NM_PROGRAMA_IES", "NM_ENTIDADE_ENSINO"]
+    ]
+    if sample_size:
+        docentes_df = docentes_df.head(sample_size)
+
+    # 10 obras mais recentes por docente, sem loop de filtro no dataframe inteiro
+    df_top = (
+        df_merged[df_merged["ID_PESSOA_DOCENTE"].isin(docentes_df["ID_PESSOA_DOCENTE"])]
+        .query("ANO_PROD <= @max_year")
+        .sort_values("ANO_PROD", ascending=False)
+        .drop_duplicates(subset=["ID_PESSOA_DOCENTE", "TITULO_PROD"])
+        .groupby("ID_PESSOA_DOCENTE", sort=False)
+        .head(10)
+    )
+    obras_por_docente = {
+        doc_id: g for doc_id, g in df_top.groupby("ID_PESSOA_DOCENTE", sort=False)
+    }
 
     dataset = []
-    for doc in docentes:
-        df_doc = df_merged[df_merged[coluna_autor].str.upper() == doc.upper()].copy()
-
-        # Trata o ano de forma segura verificando se a coluna realmente existe no DataFrame mesclado
-        has_year = coluna_ano and coluna_ano in df_doc.columns
-        if has_year:
-            df_doc[coluna_ano] = pd.to_numeric(df_doc[coluna_ano], errors="coerce").fillna(0).astype(int)
-            df_doc = df_doc[df_doc[coluna_ano] <= 2024].sort_values(by=coluna_ano, ascending=False)
-
-        df_doc = df_doc.drop_duplicates(subset=[coluna_titulo])
+    for _, d in docentes_df.iterrows():
+        g = obras_por_docente.get(d["ID_PESSOA_DOCENTE"])
         works = []
-        for _, r in df_doc.head(10).iterrows():
-            ano_val = int(r[coluna_ano]) if has_year and pd.notna(r[coluna_ano]) and r[coluna_ano] != 0 else "N/A"
-            works.append({
-                "title": str(r[coluna_titulo]),
-                "year": ano_val
-            })
-
-        dataset.append({"docente_name": doc, "validated_works": works})
+        if g is not None:
+            for _, r in g.iterrows():
+                works.append({
+                    "title": str(r["TITULO_PROD"]),
+                    "year": int(r["ANO_PROD"]) if r["ANO_PROD"] != 0 else "N/A",
+                })
+        dataset.append({
+            "docente_id": str(d["ID_PESSOA_DOCENTE"]),
+            "docente_name": d[coluna_autor],
+            "programa": d["NM_PROGRAMA_IES"],
+            "instituicao": d["NM_ENTIDADE_ENSINO"],
+            "validated_works": works,
+        })
 
     save_checkpoint(cache_key, dataset)
     print(f"--> [STEP 1] Concluído e salvo: {len(dataset)} docentes na amostra.")
     return dataset
 
 
-def step_2_fetch_candidates(dataset_docentes, sample_size: int) -> list:
-    """STEP 2: Consulta a API do OpenAlex usando o tamanho da amostra na chave do cache."""
-    cache_key = f"step2_openalex_candidates_sample_{sample_size}.json"
+def step_2_fetch_candidates(dataset_docentes, tag: str) -> list:
+    """STEP 2: Consulta o OpenAlex, salvando incrementalmente (base grande demora horas)."""
+    cache_key = f"step2_openalex_candidates_{tag}.json"
     cached_data = load_checkpoint(cache_key)
     if cached_data:
         print(f"--> [STEP 2] Carregado do Cache ({len(cached_data)} docentes).")
         return cached_data
 
+    partial_file = f"step2_partial_{tag}.jsonl"
+    partial_path = os.path.join(CACHE_DIR, partial_file)
+    done = {}
+    if os.path.exists(partial_path):
+        with open(partial_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    row = json.loads(line)
+                    done[row["docente_id"]] = row
+        print(f"--> [STEP 2] Retomando: {len(done)} docentes já buscados.")
+
     print("\n[STEP 2] Consultando candidatos no OpenAlex...")
     enriched_dataset = []
+    total = len(dataset_docentes)
 
-    for item in dataset_docentes:
-        doc_name = item["docente_name"]
-        print(f"  - Buscando para: {doc_name}")
-        cands = fetch_openalex_candidates(doc_name, tau_lex=0.65, top_n=5, max_year=2024)
-        enriched_dataset.append({
-            "docente_name": doc_name,
-            "validated_works": item["validated_works"],
-            "candidates": cands
-        })
+    for idx, item in enumerate(dataset_docentes, start=1):
+        doc_id = item["docente_id"]
+        if doc_id in done:
+            enriched_dataset.append(done[doc_id])
+            continue
+
+        print(f"  [{idx}/{total}] Buscando para: {item['docente_name']}")
+        cands = fetch_openalex_candidates(item["docente_name"], tau_lex=0.65, top_n=5, max_year=2024)
+        row = {**item, "candidates": cands}
+        append_llm_result(row, partial_file)  # só anexa uma linha JSON no arquivo
+        enriched_dataset.append(row)
 
     save_checkpoint(cache_key, enriched_dataset)
     print("--> [STEP 2] Concluído e salvo.")
     return enriched_dataset
 
 
-def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
-    """STEP 3: Constrói os grafos usando o tamanho da amostra na chave do cache."""
-    cache_key = f"step3_graph_contexts_sample_{sample_size}.json"
+def step_3_build_graph_contexts(enriched_dataset, tag: str) -> list:
+    """STEP 3: Constrói os grafos usando programa/instituição reais de cada docente."""
+    cache_key = f"step3_graph_contexts_{tag}.json"
     cached_data = load_checkpoint(cache_key)
     if cached_data:
         print(f"--> [STEP 3] Carregado do Cache ({len(cached_data)} pares).")
@@ -298,15 +366,17 @@ def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
     eval_pairs = []
 
     for item in enriched_dataset:
+        doc_id = item["docente_id"]
         doc_name = item["docente_name"]
+        programa = str(item.get("programa") or "Programa não informado")
+        instituicao = str(item.get("instituicao") or "Instituição não informada")
         val_works = item["validated_works"]
 
         for c in item["candidates"]:
-            # Constrói o grafo
             G = nx.MultiDiGraph()
             G.add_node("A1", node_type="author", label=doc_name, source="Sucupira", validated=True)
-            G.add_node("P1", node_type="graduate_program", label="PPG Computação", source="Sucupira", validated=True)
-            G.add_node("I1", node_type="institution", label="UFSCar / USP", source="Sucupira", validated=True)
+            G.add_node("P1", node_type="graduate_program", label=programa, source="Sucupira", validated=True)
+            G.add_node("I1", node_type="institution", label=instituicao, source="Sucupira", validated=True)
             G.add_edge("A1", "P1", relation="member_of_ppg", source="Sucupira", validated=True)
             G.add_edge("P1", "I1", relation="hosted_by", source="Sucupira", validated=True)
 
@@ -319,7 +389,8 @@ def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
             G.add_node(cand_id, node_type="author", label=c["name"], source="OpenAlex", validated=False)
 
             for aff in c.get("affiliations", []):
-                if "São Carlos" in aff or "UFSCar" in aff or "USP" in aff:
+                if same_institution(instituicao, aff):
+                    # só liga ao I1 quando a instituição realmente bate com a do docente
                     G.add_edge(cand_id, "I1", relation="affiliated_with", source="OpenAlex", validated=False)
                 else:
                     inst_id = f"I_{uuid.uuid4().hex[:8]}"
@@ -333,30 +404,40 @@ def step_3_build_graph_contexts(enriched_dataset, sample_size: int) -> list:
                 G.add_edge(cand_id, w_id, relation="author_of", source="OpenAlex", validated=False)
                 cand_works.append({"title": w["title"], "year": w["year"]})
 
-            # Extração de Caminhos no Grafo
             UG = nx.Graph(G)
             paths = list(nx.all_simple_paths(UG, source="A1", target=cand_id, cutoff=5))
 
             path_evidences = []
             for p in paths:
                 parts = []
-                for idx_node, n_id in enumerate(p):
+                for n_id in p:
                     nd = G.nodes[n_id]
                     parts.append(f"{n_id} [{nd['node_type']}] \"{nd['label']}\"")
                 path_evidences.append(" | ".join(parts))
 
             context = {
-                "validated_author": {"name": doc_name, "source": "Sucupira", "works": val_works},
-                "candidate_author": {"name": c["name"], "source": "OpenAlex", "works": cand_works},
-                "graph_paths": path_evidences
+                "validated_author": {
+                    "name": doc_name, "source": "Sucupira",
+                    "program": programa, "institution": instituicao,
+                    "works": val_works,
+                },
+                "candidate_author": {
+                    "name": c["name"], "source": "OpenAlex",
+                    "affiliations": c.get("affiliations", []),
+                    "works": cand_works,
+                },
+                "graph_paths": path_evidences,
             }
 
             eval_pairs.append({
+                "docente_id": doc_id,
                 "docente_name": doc_name,
+                "programa": programa,
+                "instituicao": instituicao,
                 "candidate": c,
                 "validated_works": val_works,
                 "candidate_works": cand_works,
-                "context": context
+                "context": context,
             })
 
     save_checkpoint(cache_key, eval_pairs)
@@ -379,10 +460,11 @@ def step_4_process_llm_with_resilience(eval_pairs, client, model_name) -> list:
     """.strip()
 
     for idx, pair in enumerate(eval_pairs, start=1):
+        doc_id = pair["docente_id"]
         doc_name = pair["docente_name"]
         cand = pair["candidate"]
         cand_id = cand["id"]
-        pair_key = f"{doc_name}_{cand_id}"
+        pair_key = f"{doc_id}_{cand_id}"
 
         if pair_key in already_processed:
             print(f"  [{idx}/{len(eval_pairs)}] Pulo (Já processado no Checkpoint): {doc_name} <-> {cand['name']}")
@@ -409,7 +491,10 @@ def step_4_process_llm_with_resilience(eval_pairs, client, model_name) -> list:
             trabalhos_openalex_str = "\n".join([f"{w['title']} ({w['year']})" for w in pair["candidate_works"]])
 
             row = {
+                "Docente_ID": doc_id,
                 "Docente_Sucupira": doc_name,
+                "Programa": pair["programa"],
+                "Instituicao": pair["instituicao"],
                 "Candidato_OpenAlex": cand["name"],
                 "OpenAlex_ID": cand_id,
                 "Similaridade_Lexical": round(cand["lexical_similarity"], 2),
@@ -467,7 +552,8 @@ def main():
     parser.add_argument("--autores", default="br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2024.csv")
     parser.add_argument("--producoes1", default="br-capes-colsucup-producao-2021a2024-2025-12-01-bibliografica-artpe-p1.csv")
     parser.add_argument("--producoes2", default="br-capes-colsucup-producao-2021a2024-2025-12-01-bibliografica-artpe-p2.csv")
-    parser.add_argument("--sample-size", type=int, default=5)
+    parser.add_argument("--ppg", default=None, help="Filtro de programa (vazio = base inteira)")
+    parser.add_argument("--sample-size", type=int, default=0, help="0 = todos os docentes")
     parser.add_argument("--model", default="cortex-icmc")
     parser.add_argument("--output", default="teste_desambiguacao_ccmc.xlsx")
     parser.add_argument("--reset-cache", action="store_true", help="Apaga todos os checkpoints locais antes de iniciar")
@@ -487,9 +573,11 @@ def main():
     client = OpenAI(api_key=api_key, base_url="https://agents4gov.icmc.usp.br/api/v1")
 
     # Execução encadeada dos Steps com tolerância a falhas
-    dataset = step_1_load_sucupira(args.autores, args.producoes1, args.producoes2, "CIÊNCIAS DA COMPUTAÇÃO E MATEMÁTICA COMPUTACIONAL", args.sample_size)
-    enriched_dataset = step_2_fetch_candidates(dataset, args.sample_size)
-    eval_pairs = step_3_build_graph_contexts(enriched_dataset, args.sample_size)
+    tag = make_tag(args.ppg, args.sample_size)
+
+    dataset = step_1_load_sucupira(args.autores, args.producoes1, args.producoes2, args.ppg, args.sample_size)
+    enriched_dataset = step_2_fetch_candidates(dataset, tag)
+    eval_pairs = step_3_build_graph_contexts(enriched_dataset, tag)
     llm_results = step_4_process_llm_with_resilience(eval_pairs, client, args.model)
     step_5_export_reports(llm_results, args.output)
 
