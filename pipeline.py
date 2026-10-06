@@ -554,7 +554,7 @@ def main():
     parser.add_argument("--producoes2", default="br-capes-colsucup-producao-2021a2024-2025-12-01-bibliografica-artpe-p2.csv")
     parser.add_argument("--ppg", default=None, help="Filtro de programa (vazio = base inteira)")
     parser.add_argument("--sample-size", type=int, default=0, help="0 = todos os docentes")
-    parser.add_argument("--model", default="cortex-icmc")
+    parser.add_argument("--model", default="labic-text")
     parser.add_argument("--output", default="teste_desambiguacao_ccmc.xlsx")
     parser.add_argument("--reset-cache", action="store_true", help="Apaga todos os checkpoints locais antes de iniciar")
 
