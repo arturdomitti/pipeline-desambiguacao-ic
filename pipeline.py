@@ -225,7 +225,14 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter=None, sam
         return cached_data
 
     print("\n[STEP 1] Lendo arquivos CSV da Sucupira...")
-    df_autores = pd.read_csv(autores_csv, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines="skip")
+    if isinstance(autores_csv, str):
+        autores_csv = [autores_csv]
+    df_autores = pd.concat(
+        [pd.read_csv(p, sep=";", encoding="iso-8859-1", low_memory=False, on_bad_lines="skip")
+        for p in autores_csv],
+        ignore_index=True,
+    )
+    df_autores = df_autores.drop_duplicates()
 
     # só docentes
     df_autores = df_autores[df_autores["ID_PESSOA_DOCENTE"].notna()].copy()
@@ -252,6 +259,11 @@ def step_1_load_sucupira(autores_csv, prod1_csv, prod2_csv, ppg_filter=None, sam
 
     colunas_possiveis_ano = ["AN_BASE_REVISION", "AN_BASE", "NU_ANO_PRODUCAO", "AN_PRODUCAO"]
     coluna_ano = next((c for c in colunas_possiveis_ano if c in df_producoes.columns), None)
+
+    if coluna_ano:
+        print(df_producoes[coluna_ano].value_counts().sort_index())
+    else:
+        print("Aviso: nenhuma coluna de ano encontrada em df_producoes")
 
     # limpa as chaves do merge (sem "nan" casando entre si)
     df_autores = df_autores.dropna(subset=[col_key_autores]).copy()
@@ -549,7 +561,12 @@ def step_5_export_reports(results, output_path):
 
 def main():
     parser = argparse.ArgumentParser(description="Pipeline Resiliente de Desambiguação")
-    parser.add_argument("--autores", default="br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2024.csv")
+    parser.add_argument("--autores", nargs="+", default=[
+    "br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2021.csv",
+    "br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2022.csv",
+    "br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2023.csv",
+    "br-capes-colsucup-prod-autor-2021a2024-2025-12-01-bibliografica-artpe-2024.csv",
+    ])
     parser.add_argument("--producoes1", default="br-capes-colsucup-producao-2021a2024-2025-12-01-bibliografica-artpe-p1.csv")
     parser.add_argument("--producoes2", default="br-capes-colsucup-producao-2021a2024-2025-12-01-bibliografica-artpe-p2.csv")
     parser.add_argument("--ppg", default=None, help="Filtro de programa (vazio = base inteira)")
