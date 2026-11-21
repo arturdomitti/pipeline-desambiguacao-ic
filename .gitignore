@@ -5,3 +5,6 @@
 __pycache__/
 .env
 # Sincronização do repositório
+
+pipeline_internacionalizacao.py
+.pipeline_internacionalizacao_cache/
